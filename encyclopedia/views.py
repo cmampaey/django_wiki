@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django import forms
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from . import util
 
@@ -20,6 +21,7 @@ def new(request):
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
             util.save_entry(title, content)
+            return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "encyclopedia/new.html", {
         "form": form
