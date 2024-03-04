@@ -5,6 +5,8 @@ from django.urls import reverse
 
 from . import util
 
+import random
+
 class NewEntryForm (forms.Form):
     title = forms.CharField(label="Title")
     content = forms.CharField(label="Content")
@@ -14,7 +16,7 @@ def index(request):
         "entries": util.list_entries()
     })
 
-def new(request):
+def new_page(request):
     if request.method == "POST":
         form = NewEntryForm(request.POST)
         if form.is_valid():
@@ -30,4 +32,9 @@ def new(request):
     return render(request, "encyclopedia/new.html", {
         "form": NewEntryForm()
     })
-        
+
+## not working yet, still to define how the URL is served from the list of entries
+# def random_page(request):
+   # entries = util.list_entries()
+    # selected_page = random.choice(entries)
+    # return HttpResponseRedirect(reverse("wiki", args=[selected_page]))
