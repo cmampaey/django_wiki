@@ -33,8 +33,10 @@ def new_page(request):
         "form": NewEntryForm()
     })
 
-## not working yet, still to define how the URL is served from the list of entries
+
+
 # def random_page(request):
    # entries = util.list_entries()
     # selected_page = random.choice(entries)
     # return HttpResponseRedirect(reverse("wiki", args=[selected_page]))
+## not working yet, still to define how the URL is served from the list of entries
