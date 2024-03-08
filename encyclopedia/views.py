@@ -43,6 +43,12 @@ def md_html(title):
     else:
         return markdowner.convert(content)
     
+def wiki(request, title):
+    html_content = md_html(title)
+    if html_content == None:
+        return render(request, "encyclopedia/404.html") # 404 nog maken
+    else: 
+        return
 
 # def random_page(request):
    # entries = util.list_entries()
