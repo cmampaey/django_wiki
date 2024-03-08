@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django import forms
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+import markdown
+import markdown2
 
 from . import util
 
@@ -33,7 +35,14 @@ def new_page(request):
         "form": NewEntryForm()
     })
 
-
+def md_html(title):
+    content = util.get_entry(title)
+    markdowner = markdown.Markdown()
+    if content == None:
+        return None
+    else:
+        return markdowner.convert(content)
+    
 
 # def random_page(request):
    # entries = util.list_entries()
