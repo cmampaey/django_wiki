@@ -3,7 +3,6 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import markdown
-import markdown2
 
 from . import util
 
@@ -43,12 +42,17 @@ def md_html(title):
     else:
         return markdowner.convert(content)
     
-def wiki(request, title):
+def entry(request, title):
     html_content = md_html(title)
     if html_content == None:
-        return render(request, "encyclopedia/404.html") # 404 nog maken
+        return render(request, "encyclopedia/404.html",  {
+            "message": "The entry you are looking for does not exist, consider creating this page"
+            })
     else: 
-        return
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "content": html_content
+        } )
 
 # def random_page(request):
    # entries = util.list_entries()
