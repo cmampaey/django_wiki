@@ -44,3 +44,15 @@ textarea {
     height: 60px;
     margin-right: 10px;
 }
+
+textarea {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    height: 100px;
+}
+
+input {
+    display: flex;
+    
+}

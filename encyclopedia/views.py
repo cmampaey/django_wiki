@@ -8,9 +8,9 @@ from . import util
 
 import random
 
-class NewEntryForm (forms.Form):
+class NewEntryForm(forms.Form):
     title = forms.CharField(label="Title")
-    content = forms.CharField(label="Content")
+    content = forms.CharField(label="Content", widget=forms.Textarea)
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
